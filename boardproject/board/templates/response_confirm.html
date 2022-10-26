@@ -4,16 +4,20 @@
 
 {% block content %}
 <div class="response-form-container">
-    下記の内容で投稿してよろしいですか？
-    {% for field in form %}
-        {{ field.label }}:{{ field.value }}<br>
-    {% endfor %}
+    <div>
+        <p>下記の内容で投稿してよろしいですか？</p>
+        {% for field in form %}
+            {{ field.label }}:{{ field.value }}<br>
+        {% endfor %}
+    </div>
     <form class="response-form" action="{% url 'response_create' form.thread_pk %}" method="post">
         {% csrf_token %}
         {% for field in form %}
-            {{field.as_hidden}}
+            {{ field.as_hidden }}
         {% endfor %}
-        <input type="submit" value="投稿">
+        <div class="center">
+            <button type="submit" class="btn">書き込む</button>
+        </div>
     </form>
 </div>
 {% endblock content %}

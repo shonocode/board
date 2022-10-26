@@ -17,6 +17,16 @@
     height: 100%;
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    margin: 1rem;
+    padding: .5rem;
+}
+
 /* ヘッダーエリア*/
 .site-header {
     background-color: var(--main-color);
@@ -70,13 +80,16 @@
 
 .response-form-container {
     padding: 1rem;
+    margin: 1rem auto;
     background-color: var(--base-color);
-    border-radius: 9999px;
+    border-radius: 30px;
+    max-width: 600px;
 }
 
 .response-form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 /* /* デスクトップ用 
