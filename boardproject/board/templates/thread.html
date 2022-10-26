@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}goちゃんねる{% endblock %}
+
+{% block content %}
+<div class="thread-container">
+    <div class="thread-title">
+        <h1>{{ thread.title }} - {{ thread.created_at }}</h1>
+    </div>
+    <div class="response-container">
+        {% for response in thread.response_set.all %}
+        <div class="response">
+            <div class="response-header">
+                <span class="response-num">{{ response.number }}</span>
+                <span class="response-name">{{ response.name }}</span>
+                <span class="response-date">{{ response.created_at }}</span>
+            </div>
+            <p class="response-text">{{ response.text }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="response-form-container">
+    <form class="response-form" action="{% url 'response_confirm' thread.pk %}" method="post">
+        {% csrf_token %}
+        {{ response_form }}
+        <div>
+            <button type="submit">書き込む</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}

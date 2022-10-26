@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}goちゃんねる{% endblock %}
+
+{% block content %}
+<div class="response-form-container">
+    下記の内容で投稿してよろしいですか？
+    {% for field in form %}
+        {{ field.label }}:{{ field.value }}<br>
+    {% endfor %}
+    <form class="response-form" action="{% url 'response_create' form.thread_pk %}" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            {{field.as_hidden}}
+        {% endfor %}
+        <input type="submit" value="投稿">
+    </form>
+</div>
+{% endblock content %}

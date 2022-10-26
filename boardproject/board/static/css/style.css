@@ -1,0 +1,88 @@
+/* 基本設定 */
+:root {
+    --main-color: #f9f9f9;
+    --background-color: #f2f3f7;
+    --base-color: #efefef;
+    --sub-color: #697699;
+    --text-color-white: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.wrapper {
+    height: 100%;
+}
+
+/* ヘッダーエリア*/
+.site-header {
+    background-color: var(--main-color);
+}
+
+.site-header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.site-title {
+    font-weight: bold;
+    font-size: large;
+}
+
+/* メインエリア　*/
+.site-main {
+    flex: 1;
+    background-color: var(--background-color);
+}
+
+/* フッターエリア*/
+.site-footer {
+    background-color: var(--sub-color);
+}
+
+.site-footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.copyright {
+    color: white;
+}
+
+.thread-container {
+    padding: 0 1rem;
+}
+
+.response-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.response {
+    background-color: var(--base-color);
+    margin: 1px;
+}
+
+.response-form-container {
+    padding: 1rem;
+    background-color: var(--base-color);
+    border-radius: 9999px;
+}
+
+.response-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* /* デスクトップ用 
+@media (min-width:960px){
+    .wrapper {
+        width: 960px;
+        margin: 0 auto;
+    }
+} */

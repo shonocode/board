@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}goちゃんねる{% endblock %}
+
+{% block content %}
+<ul>
+    {% for thread in threads %}
+    <li>{{ thread.title }}({{ thread.response_count }}){{ thread.update_date }}</li>
+    {% endfor %}
+</ul>
+{% endblock content %}
