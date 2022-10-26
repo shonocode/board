@@ -4,7 +4,6 @@
     --background-color: #f2f3f7;
     --base-color: #efefef;
     --sub-color: #697699;
-    --text-color-white: white;
 }
 
 .container {
@@ -13,7 +12,10 @@
     height: 100vh;
 }
 
-.wrapper {
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 100%;
 }
 
@@ -38,9 +40,13 @@
     align-items: center;
 }
 
-.site-title {
+.site-title,
+.site-title:visited {
     font-weight: bold;
     font-size: large;
+    text-decoration: none;
+    margin: 1rem;
+    color: #0f0f0f;
 }
 
 /* メインエリア　*/
@@ -65,7 +71,9 @@
 }
 
 .thread-container {
-    padding: 0 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .response-container {
@@ -78,24 +86,22 @@
     margin: 1px;
 }
 
-.response-form-container {
+.response-num {
+    text-decoration: none;
+    color: black;
+}
+
+.form-container {
     padding: 1rem;
     margin: 1rem auto;
     background-color: var(--base-color);
     border-radius: 30px;
     max-width: 600px;
+    width: 100%;
 }
 
-.response-form {
+.form {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-
-/* /* デスクトップ用 
-@media (min-width:960px){
-    .wrapper {
-        width: 960px;
-        margin: 0 auto;
-    }
-} */

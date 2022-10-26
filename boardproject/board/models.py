@@ -6,7 +6,7 @@ class Thread(models.Model):
     title = models.CharField(max_length=100, verbose_name="スレッドタイトル")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    delete_code = models.CharField(max_length=10, null=False, blank=True)
+    delete_code = models.CharField(max_length=10, null=True, blank=True, verbose_name="削除用コード")
 
     def __str__(self):
         return self.title
@@ -20,7 +20,7 @@ class Response(models.Model):
     random_id = models.CharField(max_length=10)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    delete_code = models.CharField(max_length=10, null=False, blank=True, verbose_name="削除用コード")
+    delete_code = models.CharField(max_length=10, null=True, blank=True, verbose_name="削除用コード")
 
     def __str__(self):
         return self.text

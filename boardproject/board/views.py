@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, FormView
 from django.db.models import Count, Max
 from .models import Thread, Response, Key
-from .forms import ResponseCreateForm
+from .forms import ThreadCreateForm, ResponseCreateForm
 import secrets, string
 
 # Create your views here.
@@ -17,6 +17,29 @@ class IndexView(ListView):
 
         return queryset
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["thread_form"] = ThreadCreateForm
+
+        return context
+
+# スレッド作成確認
+class ConfirmThreadView(FormView):
+    form_class = ThreadCreateForm
+
+    def form_valid(self, form):
+        return render(self.request, 'thread_confirm.html', {'form': form})
+
+class CreateThreadView(CreateView):
+    form_class = ThreadCreateForm
+
+    def form_valid(self, form):
+        thread = form.save(commit=False)
+        thread.pk = Thread.objects.all().count() + 1
+        thread.save()
+
+        return redirect('thread_detail', pk=thread.pk)
+
 # スレッド
 class ThreadView(DetailView):
     template_name = "thread.html"
@@ -25,11 +48,11 @@ class ThreadView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["response_form"] = ResponseCreateForm(initial={"delete_code":get_random_code(10)})
+        context["response_form"] = ResponseCreateForm#(initial={"delete_code":get_random_code(10)})
 
         return context
 
-# レス確認
+# レス書き込み確認
 class ConfirmResponseView(FormView):
     form_class = ResponseCreateForm
 
@@ -38,7 +61,7 @@ class ConfirmResponseView(FormView):
 
         return render(self.request, 'response_confirm.html', {'form': form})
 
-# レス投稿
+# レス書き込み
 class CreateResponseView(CreateView):
     form_class = ResponseCreateForm
 

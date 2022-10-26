@@ -11,15 +11,15 @@
 </head>
 <body class="container">
     <header class="site-header">
-        <div class="site-header-container wrapper">
-            <p class="site-title">goちゃんねる🏺</p>
+        <div class="site-header-container">
+            <a href="{% url 'index' %}" class="site-title">goちゃんねる🏺</a>
         </div>
     </header>
     <main class="site-main">
         {% block content %}{% endblock content %}
     </main>
     <footer class="site-footer">
-        <div class="site-footer-container wrapper">
+        <div class="site-footer-container">
             <p class="copyright">@shonocode</p>
         </div>
     </footer>
