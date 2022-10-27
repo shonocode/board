@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}goちゃんねる{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <div class="thread-container">
+        <div class="thread-title">
+            <h1>{{ thread.title }} - {{ thread.created_at }}</h1>
+        </div>
+        <div class="response-container">
+            {% for response in thread.response_set.all %}
+            <div class="response">
+                <div class="response-header">
+                    <a href="#{{ response.number }}" class="response-num">{{ response.number }}</a>
+                    {% if response.email == None %}
+                    <span class="response-name">{{ response.name }}</span>
+                    {% else %}
+                    <a href="mailto:{{ response.email }}" class="response-name">{{ response.name }}</a>
+                    {% endif %} 
+                    <span class="response-random_id">ID:{{ response.random_id }}</span>
+                    <span class="response-date">{{ response.created_at }}</span>
+                </div>
+                <p class="response-text">{{ response.text }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="form-container">
+        <form class="form" action="{% url 'response_confirm' thread.pk %}" method="post">
+            {% csrf_token %}
+            {{ response_form }}
+            <div class="center">
+                <button type="submit" class="btn">書き込む</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

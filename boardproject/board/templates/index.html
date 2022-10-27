@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}goちゃんねる{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <div class="thread-container">
+        {% for thread in threads %}
+        <div class="thread">
+            <a href="{% url 'thread_detail' thread.pk %}">{{ forloop.counter }}:{{ thread.title }}({{ thread.response_count }}){{ thread.update_date }}</a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="form-container">
+        <form class="form" action="{% url 'thread_confirm' %}" method="post">
+            {% csrf_token %}
+            {{ thread_form }}
+            <div class="center">
+                <button type="submit" class="btn">作成</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

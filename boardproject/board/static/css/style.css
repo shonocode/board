@@ -1,0 +1,107 @@
+/* 基本設定 */
+:root {
+    --main-color: #f9f9f9;
+    --background-color: #f2f3f7;
+    --base-color: #efefef;
+    --sub-color: #697699;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    margin: 1rem;
+    padding: .5rem;
+}
+
+/* ヘッダーエリア*/
+.site-header {
+    background-color: var(--main-color);
+}
+
+.site-header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.site-title,
+.site-title:visited {
+    font-weight: bold;
+    font-size: large;
+    text-decoration: none;
+    margin: 1rem;
+    color: #0f0f0f;
+}
+
+/* メインエリア　*/
+.site-main {
+    flex: 1;
+    background-color: var(--background-color);
+}
+
+/* フッターエリア*/
+.site-footer {
+    background-color: var(--sub-color);
+}
+
+.site-footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.copyright {
+    color: white;
+}
+
+.thread-container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.response-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.response {
+    background-color: var(--base-color);
+    margin: 1px;
+}
+
+.response-num {
+    text-decoration: none;
+    color: black;
+}
+
+.form-container {
+    padding: 1rem;
+    margin: 1rem auto;
+    background-color: var(--base-color);
+    border-radius: 30px;
+    max-width: 600px;
+    width: 100%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
